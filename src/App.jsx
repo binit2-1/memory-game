@@ -1,10 +1,19 @@
-import { useState } from 'react'
+import React from 'react'
 
-function App() {
+const App = () => {
   return (
-
-      <div className='text-3xl font-bold text-red-500'> Hello Tailwind </div>
+    <div>
+      <video 
+      autoPlay 
+      loop 
+      muted 
+      className='w-screen h-screen object-cover '
+      >    
+        <source src="/background.mp4" type="video/mp4" />
+      </video>
+    </div>
   )
 }
 
 export default App
+
