@@ -2,3 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .style-button {
+    @apply w-12 h-12 rounded-full bg-yellow-300 text-fuchsia-600 flex items-center justify-center;
+  }
+}
