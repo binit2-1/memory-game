@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useRef, useEffect } from 'react'
 import { Github, Volume2, VolumeOff, CircleQuestionMark, SendToBack } from 'lucide-react'
 import CircularButton from './components/CircularButton.jsx'  
+import GameMode from './components/GameMode.jsx'
 
 const App = () => {
   const [isMuted, setIsMuted] = useState(false)
@@ -44,8 +45,13 @@ useEffect(() => {
         <source src="/background.webm" type="video/webm" />
       </video>
       <audio ref={audioRef} src='/theme.mp3' loop preload='auto' />
+
       <div className='absolute flex items-start justify-start w-[200px] h-auto hover:scale-110 transition-transform duration-300 cursor-pointer top-8 left-[13rem]'>
         <img src='/logo.png' alt='Logo' />
+      </div>
+
+      <div className='absolute flex items-center justify-center w-full h-full'>
+        <GameMode />
       </div>
       <div className="absolute flex items-center justify-between bottom-8 w-full px-52">
         <div className="flex gap-4">
