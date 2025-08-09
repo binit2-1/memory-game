@@ -14,11 +14,4 @@
   }
 }
 
-@layer utilities {
-  .text-stroke {
-    -webkit-text-stroke-width: 4px;
-    -webkit-text-stroke-color: #c026d3; 
-    color: transparent;
-  }
-}
 

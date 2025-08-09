@@ -46,8 +46,12 @@ useEffect(() => {
       </video>
       <audio ref={audioRef} src='/theme.mp3' loop preload='auto' />
 
-      <div className='absolute flex items-start justify-start w-[200px] h-auto hover:scale-110 transition-transform duration-300 cursor-pointer top-8 left-[13rem]'>
-        <img src='/logo.png' alt='Logo' />
+      <div className='absolute flex items-start justify-start w-[200px] h-auto top-8 left-[13rem] z-50'>
+        <img
+          src='/logo.png'
+          alt='Logo'
+          className='cursor-pointer transition-transform duration-300 hover:scale-110'
+        />
       </div>
 
       <div className='absolute flex items-center justify-center w-full h-full'>
