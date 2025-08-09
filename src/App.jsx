@@ -2,11 +2,14 @@ import React from 'react'
 import { useState, useRef, useEffect } from 'react'
 import { Github, Volume2, VolumeOff, CircleQuestionMark, SendToBack } from 'lucide-react'
 import CircularButton from './components/CircularButton.jsx'  
-import GameMode from './components/GameMode.jsx'
+import HeroText from './components/HeroText.jsx'
+import GameMode from './components/GameModeSelection.jsx'
+import GameModeSelection from './components/GameModeSelection.jsx'
 
 const App = () => {
   const [isMuted, setIsMuted] = useState(false)
   const audioRef = useRef(null)
+  const [gameMode, setGameMode] = useState({})
 
 useEffect(() => {
   if (audioRef.current){
@@ -31,6 +34,9 @@ useEffect(() => {
     window.open('https://github.com/binit2-1/memory-game')
   }
 
+  function handleGameModeChange(mode) {
+    setGameMode(mode)
+  }
 
   return (
     <div className="relative w-screen h-screen">
@@ -54,8 +60,13 @@ useEffect(() => {
         />
       </div>
 
-      <div className='absolute flex items-center justify-center w-full h-full'>
-        <GameMode />
+      <div className='absolute flex items-center justify-center w-full h-full bottom-8'>
+        <HeroText />
+      </div>
+      <div className='absolute flex items-end justify-center w-full h-full gap-4 bottom-64'>
+        <GameModeSelection text="Easy" onClick={() => handleGameModeChange("easy")} />
+        <GameModeSelection text="Medium" onClick={() => handleGameModeChange("medium")} />
+        <GameModeSelection text="Hard" onClick={() => handleGameModeChange("hard")} />
       </div>
       <div className="absolute flex items-center justify-between bottom-8 w-full px-52">
         <div className="flex gap-4">
