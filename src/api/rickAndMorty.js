@@ -1,6 +1,6 @@
 const API_BASE = "https://rickandmortyapi.com/api";
 
-export async function fetchCharacters(page = 1){
+async function fetchCharacters(page = 1){
     try{
         const response = await fetch(`${API_BASE}/character?page=${page}`);
         if(!response.ok){
@@ -13,3 +13,5 @@ export async function fetchCharacters(page = 1){
         throw error;
     }
 }
+
+export default fetchCharacters;
