@@ -6,6 +6,7 @@ import CircularButton from './components/CircularButton.jsx'
 const App = () => {
   const [isMuted, setIsMuted] = useState(false)
   const audioRef = useRef(null)
+
 useEffect(() => {
   if (audioRef.current){
     audioRef.current.play().catch((error) => {
@@ -42,8 +43,8 @@ useEffect(() => {
         <source src="/background.mp4" type="video/mp4" />
         <source src="/background.webm" type="video/webm" />
       </video>
-      <audio ref={audioRef} src='./theme.mp3' loop preload='auto' />
-      <div className='absolute flex items-start justify-start w-[200px] h-auto top-8 left-[13rem]'>
+      <audio ref={audioRef} src='/theme.mp3' loop preload='auto' />
+      <div className='absolute flex items-start justify-start w-[200px] h-auto hover:scale-110 transition-transform duration-300 cursor-pointer top-8 left-[13rem]'>
         <img src='/logo.png' alt='Logo' />
       </div>
       <div className="absolute flex items-center justify-between bottom-8 w-full px-52">
