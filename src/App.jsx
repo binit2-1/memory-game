@@ -3,14 +3,15 @@ import { useState, useRef, useEffect } from 'react'
 import { Github, Volume2, VolumeOff, CircleQuestionMark, SendToBack } from 'lucide-react'
 import CircularButton from './components/CircularButton.jsx'  
 import HeroText from './components/HeroText.jsx'
-import GameMode from './components/GameModeSelection.jsx'
 import GameModeSelection from './components/GameModeSelection.jsx'
 import Scorecard from './components/Scorecard.jsx'
 
 const App = () => {
   const [isMuted, setIsMuted] = useState(false)
-  const audioRef = useRef(null)
   const [gameMode, setGameMode] = useState({})
+  const [scorecard, setScorecard] = useState(true)
+  const audioRef = useRef(null)
+  
 
 useEffect(() => {
   if (audioRef.current){
@@ -37,6 +38,10 @@ useEffect(() => {
 
   function handleGameModeChange(mode) {
     setGameMode(mode)
+  }
+
+  function handleScorecardToggle() {
+    setScorecard(!scorecard)
   }
 
   return (
