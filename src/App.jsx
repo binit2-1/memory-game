@@ -5,6 +5,7 @@ import CircularButton from './components/CircularButton.jsx'
 import HeroText from './components/HeroText.jsx'
 import GameModeSelection from './components/GameModeSelection.jsx'
 import Scorecard from './components/Scorecard.jsx'
+import FlipCard from './components/FlipCard.jsx'
 
 const App = () => {
   const [isMuted, setIsMuted] = useState(false)
@@ -45,11 +46,11 @@ useEffect(() => {
   }
 
   return (
-    <div className="relative w-screen h-screen">
-      <video
-        autoPlay
-        loop
-        muted
+      <div className="relative w-screen h-screen">
+        <video
+          autoPlay
+          loop
+          muted
         className="absolute w-screen h-screen object-cover"
         onError={(e) => console.error("Error loading video:", e)}
       >
@@ -57,7 +58,9 @@ useEffect(() => {
         <source src="/background.webm" type="video/webm" />
       </video>
       <audio ref={audioRef} src='/theme.mp3' loop preload='auto' />
-
+      <div className='absolute '>
+        <FlipCard />
+      </div>
       <div className='absolute w-[200px] h-auto top-8 left-[13rem] z-50'>
         <img
           src='/logo.png'
