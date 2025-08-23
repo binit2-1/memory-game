@@ -8,28 +8,10 @@ import fetchCharacters from './api/rickAndMorty.js'
 
 const App = () => {
   const [isMuted, setIsMuted] = useState(false)
-  const [scorecard, setScorecard] = useState(true)
   const audioRef = useRef(null)
   const videoRef = useRef(null)
-
   const modeToSize = {easy:3, medium:4, hard:5}
 
-  useEffect(() => {
-    async function load(){
-      try{
-        setLoading(true)
-        const characters = await fetchCharacters(2)
-        setAllCards(characters)
-      } catch (error){
-        setFetchError("failed to load characters")
-      } finally {
-        setLoading(false)
-      }
-
-    }
-
-    load()
-  }, [])
 
   useEffect(() => {
 
@@ -40,18 +22,12 @@ const App = () => {
           console.error("Error playing video:", error);
         });
       };
-      
-      // Play immediately
       playVideo();
-      
-      // Set up event listeners
       video.addEventListener('pause', playVideo);
       video.addEventListener('ended', () => {
         video.currentTime = 0;
         playVideo();
       });
-      
-      // Clean up event listeners
       return () => {
         if (video) {
           video.removeEventListener('pause', playVideo);
