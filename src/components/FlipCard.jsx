@@ -1,19 +1,24 @@
 import React from 'react'
 
-const FlipCard = () => {
+
+const FlipCard = ({name,
+    character
+}) => {
   return (
     <div className='flex items-center justify-center bg-transparent h-screen'>
         <div className='w-48 h-64 rounded-lg'>
-            {/* Card with card.jpg background */}
             <div 
-                className='w-full h-full bg-cover bg-center rounded-lg shadow-lg border-2 border-gray-300'
+                className='flex  justify-center w-full h-full bg-cover bg-center rounded-lg shadow-lg border-2 border-gray-300'
                 style={{ 
                     backgroundImage: `url('/card.jpg')`
                 }}
             >
-                <div className='flex items-center justify-center h-full text-white font-bold text-lg bg-black bg-opacity-50 rounded-lg'>
-                    CARD
+                <div className='flex items-center justify-center w-44 h-48 text-white font-bold text-lg bg-red-500 bg-cover bg-center rounded-lg mt-1'
+                style={{
+                    backgroundImage: `url(${character})`
+                }}>
                 </div>
+                <p className='font-title text-2xl'>{name}</p>
             </div>
         </div>
     </div>
