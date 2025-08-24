@@ -116,8 +116,6 @@ memory-game/
 
 - **App.jsx**: The main application component. Handles overall layout, state management (audio, game mode, scorecard visibility), and initial data fetching.
 - **CircularButton.jsx**: A reusable styled circular button component, used for GitHub, volume, and help icons.
-- **HeroText.jsx**: Displays the main "Memory Game" title.
-- **GameModeSelection.jsx**: Provides buttons for selecting the game difficulty (Easy, Medium, Hard).
 - **Scorecard.jsx**: Displays the current score and best score (logic not yet implemented).
 - **FlipCard.jsx**: Intended to represent individual game cards with character images (implementation incomplete).
 
