@@ -3,7 +3,11 @@ import { useState, useRef, useEffect } from 'react'
 import { Github, Volume2, VolumeOff, CircleQuestionMark } from 'lucide-react'
 import CircularButton from './components/CircularButton.jsx'  
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
-import GameBoard from './pages/GameBoard.jsx'
+import GameBoardEasy from './pages/GameBoardEasy.jsx'
+import GameBoardMedium from './pages/GameBoardMed.jsx'  
+import GameBoardHard from './pages/GameBoardHard.jsx'
+import HomePage from './pages/HomePage.jsx'
+import { Link } from 'react-router-dom'
 
 const App = () => {
   const [isMuted, setIsMuted] = useState(false)
@@ -74,16 +78,20 @@ const App = () => {
         </video>
         <audio ref={audioRef} src='/theme.mp3' loop preload='auto' />
         <div className='absolute w-[200px] h-auto top-8 left-[13rem] z-50'>
-          <img
-            src='/logo.png'
-            alt='Logo'
-            className='cursor-pointer transition-transform duration-300 hover:scale-110'
-          />
+          <Link to='/'>
+            <img
+              src='/logo.png'
+              alt='Logo'
+              className='cursor-pointer transition-transform duration-300 hover:scale-110'
+            />
+          </Link>
         </div>
         
         <Routes>
-          <Route path="/" element={<GameBoard />} />
-          <Route path="/game" element={<GameBoard />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/gameeasy" element={<GameBoardEasy />} />
+          <Route path="/gamemedium" element={<GameBoardMedium />} />
+          <Route path="/gamehard" element={<GameBoardHard />} />
         </Routes>
 
         <div className="absolute flex items-center justify-between bottom-8 w-full px-52 z-50">
