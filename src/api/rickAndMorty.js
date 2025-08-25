@@ -11,7 +11,7 @@ async function fetchCharacters(page = 1){
     } catch (error) {
         console.error("Error fetching characters:", error);
         throw error;
-    }
+    } 
 }
 
 export default fetchCharacters;

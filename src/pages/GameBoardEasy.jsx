@@ -10,12 +10,17 @@ const GameBoard = () => {
   useEffect(() => {
     async function loadCharacters() {
       const characters = await fetchCharacters()
-      console.log('Characters loaded:', characters) // Debug log
+      console.log('Characters loaded:', characters) 
       setChar(characters.slice(0, 3))
     }
     
     loadCharacters()
   }, [])
+
+  const handleCardClick = (name) =>{
+    console.log(`Card clicked: ${name}`)
+    
+  }
 
   return (
     <div className='relative w-full h-full'>
@@ -28,6 +33,7 @@ const GameBoard = () => {
             key={character.id || index} 
             character={character.image} 
             name={character.name}
+            onClick={() => handleCardClick(character.name)}
           />
         ))}
       </div>
