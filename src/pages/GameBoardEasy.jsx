@@ -6,6 +6,7 @@ import FlipCard from '../components/FlipCard.jsx'
 
 const GameBoard = () => {
   const [char, setChar] = useState([])
+  const [allCardsFlipped, setAllCardsFlipped] = useState(false)
 
   useEffect(() => {
     async function loadCharacters() {
@@ -17,9 +18,16 @@ const GameBoard = () => {
     loadCharacters()
   }, [])
 
-  const handleCardClick = (name) =>{
+  const handleCardClick = (name) => {
     console.log(`Card clicked: ${name}`)
     
+    // Flip all cards
+    setAllCardsFlipped(true)
+    
+    // Auto-flip back after 1 second
+    setTimeout(() => {
+      setAllCardsFlipped(false)
+    }, 1000)
   }
 
   return (
@@ -33,6 +41,7 @@ const GameBoard = () => {
             key={character.id || index} 
             character={character.image} 
             name={character.name}
+            isFlipped={allCardsFlipped}
             onClick={() => handleCardClick(character.name)}
           />
         ))}
