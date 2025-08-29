@@ -3,6 +3,7 @@ import fetchCharacters from '../api/rickAndMorty.js'
 import { useState, useEffect } from 'react'
 import Scorecard from '../components/Scorecard.jsx'
 import FlipCard from '../components/FlipCard.jsx'
+import GameOverScreen from '../components/GameOverScreen.jsx'
 
 const GameBoard = () => {
   const [char, setChar] = useState([])
@@ -80,28 +81,13 @@ const GameBoard = () => {
   }
 
   // ✅ Conditional rendering in the return statement
-  if (gameOver) {
-    console.log(`Score: ${score}, Best Score: ${bestScore}`)
-    return (
-      <div className='flex flex-col items-center justify-center h-full'>
-        <h2 className='text-4xl font-title text-red-500 mb-4'>Round Lost!</h2>
-        <p className='text-xl text-white mb-4'>You clicked the same card twice</p>
-        <p className='text-lg text-yellow-300 mb-4'>Final Score: {score}</p>
-        <button 
-          onClick={() => {
-            setGameOver(false)
-            setClickedCards([])
-            setScore(0) 
-            // Reset to initial cards
-            const initialCards = char.slice(0, 4)
-            setGameCards(initialCards)
-          }}
-          className='px-6 py-3 bg-yellow-300 text-black rounded hover:bg-yellow-400 font-bold'
-        >
-          Play Again
-        </button>
-      </div>
-    )
+  const handlePlayAgain = () => {
+    setGameOver(false)
+    setClickedCards([])
+    setScore(0) 
+    // Reset to initial cards
+    const initialCards = char.slice(0, 4)
+    setGameCards(initialCards)
   }
 
   return (
@@ -120,6 +106,11 @@ const GameBoard = () => {
           />
         ))}
       </div>
+      
+      {/* Game Over Popup Overlay */}
+      {gameOver && (
+        <GameOverScreen score={score} onPlayAgain={handlePlayAgain} />
+      )}
     </div>
   )
 }
