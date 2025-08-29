@@ -13,7 +13,6 @@ const App = () => {
   const [isMuted, setIsMuted] = useState(false)
   const audioRef = useRef(null)
   const videoRef = useRef(null)
-  const modeToSize = {easy:3, medium:4, hard:5}
 
   useEffect(() => {
     const video = videoRef.current;
@@ -77,7 +76,7 @@ const App = () => {
           Your browser does not support the video tag.
         </video>
         <audio ref={audioRef} src='/theme.mp3' loop preload='auto' />
-        <div className='absolute w-32 sm:w-40 md:w-48 lg:w-[200px] h-auto top-4 sm:top-6 md:top-8 left-4 sm:left-8 md:left-16 lg:left-[13rem] z-50'>
+        <div className='absolute w-32 sm:w-40 md:w-48 lg:w-[200px] h-auto top-10 sm:top-9 md:top-11 left-4 sm:left-8 md:left-16 lg:left-[13rem] z-50'>
           <Link to='/'>
             <img
               src='/logo.png'

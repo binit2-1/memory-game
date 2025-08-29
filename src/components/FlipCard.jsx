@@ -50,7 +50,7 @@ const FlipCard = ({name, character, onClick, isFlipped = false}) => {
 
   return (
     <div className='flex items-center justify-center bg-transparent'>
-        <div className='w-40 h-56 sm:w-32 sm:h-48 md:w-40 md:h-56 lg:w-48 lg:h-64  rounded-lg'>
+        <div className='w-32 h-48 sm:w-32 sm:h-48 md:w-40 md:h-56 lg:w-48 lg:h-64  rounded-lg'>
             <div 
                 ref={cardRef}
                 className="relative w-full h-full rounded-lg shadow-lg border-2 border-gray-300 cursor-pointer hover:shadow-2xl transition-transform duration-1000 ease-in-out"
@@ -71,7 +71,7 @@ const FlipCard = ({name, character, onClick, isFlipped = false}) => {
                         backfaceVisibility: 'hidden'
                     }}
                 >
-                    <div className='flex w-36 sm:w-28 md:w-36 lg:w-44 h-40 sm:h-32 md:h-40 lg:h-48 font-bold text-lg bg-cover bg-center border-2 border-white rounded-lg mt-1'
+                    <div className='flex w-28 sm:w-28 md:w-36 lg:w-44 h-32 sm:h-32 md:h-40 lg:h-48 font-bold text-lg bg-cover bg-center border-2 border-white rounded-lg mt-1'
                     style={{
                         backgroundImage: `url(${character})`
                     }}>

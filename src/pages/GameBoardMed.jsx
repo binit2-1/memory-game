@@ -94,7 +94,7 @@ const GameBoard = () => {
 
   return (
     <div className='fixed inset-0 w-full h-full overflow-hidden'>
-      <div className='absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 z-50'>
+      <div className='absolute top-4 right-4 sm:right-8 md:right-12 lg:right-28 xl:right-[13rem] z-10'>
         <Scorecard score={score} bestScore={bestScore} /> 
       </div>
       
