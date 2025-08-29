@@ -77,7 +77,7 @@ const App = () => {
           Your browser does not support the video tag.
         </video>
         <audio ref={audioRef} src='/theme.mp3' loop preload='auto' />
-        <div className='absolute w-[200px] h-auto top-8 left-[13rem] z-50'>
+        <div className='absolute w-32 sm:w-40 md:w-48 lg:w-[200px] h-auto top-4 sm:top-6 md:top-8 left-4 sm:left-8 md:left-16 lg:left-[13rem] z-50'>
           <Link to='/'>
             <img
               src='/logo.png'
@@ -94,7 +94,7 @@ const App = () => {
           <Route path="/gamehard" element={<GameBoardHard />} />
         </Routes>
 
-        <div className="absolute flex items-center justify-between bottom-8 w-full px-52 z-50">
+        <div className="absolute flex items-center justify-between bottom-8 w-full px-4 sm:px-8 md:px-16 lg:px-32 xl:px-52 z-50 ">
           <div className="flex gap-4">
             <CircularButton icon={<CircleQuestionMark />} />
             <CircularButton icon={isMuted ? <VolumeOff /> : <Volume2 />} onClick={handleVolumeToggle} />

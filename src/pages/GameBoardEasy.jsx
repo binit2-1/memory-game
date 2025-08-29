@@ -110,8 +110,8 @@ const GameBoard = () => {
   }
 
   return (
-    <div className='relative w-full h-full'>
-      <div className='absolute top-8 right-8 z-50'>
+    <div className='relative w-full h-full min-h-screen overflow-hidden'>
+      <div className='absolute top-8 right-8 z-50 sm:top-8 sm:right-8'>
         <Scorecard score={score} bestScore={bestScore} /> 
       </div>
       <div className='flex justify-center items-center h-full gap-6 p-8'>

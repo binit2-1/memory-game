@@ -97,20 +97,24 @@ const GameBoard = () => {
   }
 
   return (
-    <div className='relative w-full h-full'>
-      <div className='absolute top-8 right-8 z-50'>
+    <div className='fixed inset-0 w-full h-full overflow-hidden'>
+      <div className='absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 z-50'>
         <Scorecard score={score} bestScore={bestScore} /> 
       </div>
-      <div className='flex justify-center items-center h-full gap-6 p-8'>
-        {gameCards.map((character, index) => ( 
-          <FlipCard 
-            key={`card-${index}`}
-            character={character.image} 
-            name={character.name}
-            isFlipped={allCardsFlipped}
-            onClick={() => handleCardClick(character.name, index)}
-          />
-        ))}
+      
+      {/* Fixed container with no padding to prevent scroll */}
+      <div className='absolute inset-0 flex justify-center items-center'>
+        <div className='flex flex-wrap justify-center items-center gap-2 max-w-xs sm:max-w-sm md:max-w-lg content-center'>
+          {gameCards.map((character, index) => ( 
+            <FlipCard 
+              key={`card-${index}`}
+              character={character.image} 
+              name={character.name}
+              isFlipped={allCardsFlipped}
+              onClick={() => handleCardClick(character.name, index)}
+            />
+          ))}
+        </div>
       </div>
       
       {/* Game Over Popup Overlay */}
