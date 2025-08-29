@@ -3,13 +3,10 @@ import React from 'react'
 const GameWonScreen = ({ score, onPlayAgain }) => {
   return (
     <div className='fixed inset-0 z-50 animate-fade-in'>
-      {/* Dark Overlay for entire screen */}
       <div className='absolute inset-0 bg-black bg-opacity-70 backdrop-blur-sm'></div>
       
-      {/* Content Container */}
       <div className='relative z-10 flex flex-col items-center justify-center h-full'>
         <div className='relative rounded-2xl shadow-2xl border-2 border-green-500 text-center overflow-hidden animate-popup' style={{ width: '800px', height: '450px' }}>
-          {/* Background Image only for dialog - rotated 90 degrees left */}
           <div 
             className='absolute'
             style={{ 
@@ -28,10 +25,8 @@ const GameWonScreen = ({ score, onPlayAgain }) => {
             }}
           ></div>
           
-          {/* Green Tint Overlay only for dialog */}
           <div className='absolute inset-0 bg-green-900 bg-opacity-70'></div>
           
-          {/* Dialog Content */}
           <div className='relative z-10 flex flex-col items-center justify-center h-full px-8'>
             <h2 className='text-4xl font-title text-green-400 mb-4 drop-shadow-lg animate-slide-down'>YOU WON!</h2>
             <p className='text-xl font-title text-white mb-3 font-semibold animate-slide-up'>Congratulations!</p>

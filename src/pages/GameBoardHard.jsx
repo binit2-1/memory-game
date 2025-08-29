@@ -17,10 +17,9 @@ const GameBoard = () => {
   useEffect(() => {
     async function loadCharacters() {
       const characters = await fetchCharacters()
-      console.log('Characters loaded:', characters)
       setChar(characters.slice(0, 20))
 
-      const selectedCards = characters.slice(0, 5) // 5 cards for hard
+      const selectedCards = characters.slice(0, 5)
       setGameCards(selectedCards)
     }
     
@@ -28,31 +27,24 @@ const GameBoard = () => {
   }, [])
 
   const handleCardClick = (name, index) => {
-    console.log(`Card clicked: ${name}, ${index}`)
-
     const currentCard = gameCards[index]
     
-    // Check if this card was already clicked
     const alreadyClicked = clickedCards.some(card => card.name === currentCard.name)
     
     if (alreadyClicked) {
-      console.log('Game Over! Card already clicked:', currentCard.name)
       setGameOver(true)
-      return // Stop execution
+      return
     }
 
-    // Add to clicked cards
     setClickedCards(prev => [...prev, { name: currentCard.name, index }])
 
-    // ✅ FIXED: Update score state properly
     const newScore = score + 1;
-    setScore(newScore); // Update score state
+    setScore(newScore);
     
     if(newScore > bestScore) {
-      setBestScore(newScore); // Update best score if needed
+      setBestScore(newScore);
     }
 
-    // Continue with normal flip logic
     setAllCardsFlipped(true)
     
     const otherCards = char.filter(character => 
@@ -77,17 +69,14 @@ const GameBoard = () => {
     const nextCards = [currentCard, otherCards[r1], otherCards[r2], otherCards[r3], otherCards[r4]]
 
     setTimeout(() => {
-      // First flip cards back to face-down
       setAllCardsFlipped(false)
       
-      // Then change the cards after a small delay
       setTimeout(() => {
         setGameCards(nextCards)
       }, 200)
     }, 1000)
   }
 
-  // ✅ Conditional rendering in the return statement
   const handlePlayAgain = () => {
     setGameOver(false)
     setClickedCards([])
@@ -102,12 +91,9 @@ const GameBoard = () => {
         <Scorecard score={score} bestScore={bestScore} /> 
       </div>
       
-      {/* Fixed container with no padding to prevent scroll */}
       <div className='absolute inset-0 flex justify-center items-center'>
-        {/* Mobile only: 3+2 simple layout */}
         <div className='block sm:hidden'>
           <div className='flex flex-col items-center gap-1'>
-            {/* Top row: 3 cards */}
             <div className='flex gap-1'>
               {gameCards.slice(0, 3).map((character, index) => ( 
                 <FlipCard 
@@ -119,7 +105,6 @@ const GameBoard = () => {
                 />
               ))}
             </div>
-            {/* Bottom row: 2 cards */}
             <div className='flex gap-1'>
               {gameCards.slice(3, 5).map((character, index) => ( 
                 <FlipCard 
@@ -134,7 +119,6 @@ const GameBoard = () => {
           </div>
         </div>
         
-        {/* Small and up: 5 cards in a single line */}
         <div className='hidden sm:flex justify-center items-center gap-3 md:gap-4 lg:gap-6'>
           {gameCards.map((character, index) => ( 
             <FlipCard 
@@ -148,7 +132,6 @@ const GameBoard = () => {
         </div>
       </div>
       
-      {/* Game Over Popup Overlay */}
       {gameOver && (
         <GameOverScreen score={score} onPlayAgain={handlePlayAgain} />
       )}

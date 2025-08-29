@@ -28,11 +28,9 @@ const FlipCard = ({name, character, onClick, isFlipped = false}) => {
   }
 
   const handleCardClick = () => {
-    // Just call the parent onClick handler
     if (onClick) onClick()
   }
 
-  // Calculate 3D transform based on flip state (prop) and mouse position
   const getTransform = () => {
     if (isFlipped) {
       return 'perspective(1000px) rotateY(180deg) translateZ(20px)'
@@ -63,7 +61,6 @@ const FlipCard = ({name, character, onClick, isFlipped = false}) => {
                 onMouseLeave={handleMouseLeave}
                 onClick={handleCardClick}
             >
-                {/* Front side of card */}
                 <div 
                     className='absolute inset-0 w-full h-full bg-cover bg-center rounded-lg flex flex-col items-center justify-between p-2'
                     style={{ 
@@ -79,7 +76,6 @@ const FlipCard = ({name, character, onClick, isFlipped = false}) => {
                     <p className='font-title text-white text-base sm:text-sm md:text-base lg:text-lg'>{name}</p>
                 </div>
 
-                {/* Back side of card */}
                 <div 
                     className='absolute inset-0 w-full h-full bg-cover bg-center rounded-lg'
                     style={{ 

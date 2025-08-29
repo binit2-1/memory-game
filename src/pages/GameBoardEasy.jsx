@@ -19,7 +19,6 @@ const GameBoard = () => {
   useEffect(() => {
     async function loadCharacters() {
       const characters = await fetchCharacters()
-      console.log('Characters loaded:', characters) 
       setChar(characters.slice(0, 20))
 
       const selectedCards = characters.slice(0,3)
@@ -30,51 +29,39 @@ const GameBoard = () => {
   }, [])
 
   const handleCardClick = (name, index) => {
-    console.log(`Card clicked: ${name}, ${index}`)
-
     const currentCard = gameCards[index]
     
-    // Check if this card was already clicked
     const alreadyClicked = clickedCards.some(card => card.name === currentCard.name)
     
     if (alreadyClicked) {
-      console.log('Game Over! Card already clicked:', currentCard.name)
       setGameOver(true)
       return 
     }
 
-    // Add to clicked cards
     const newClickedCards = [...clickedCards, { name: currentCard.name, index }]
     setClickedCards(newClickedCards)
 
-    // Update score state properly
     const newScore = score + 1;
-    setScore(newScore); // Update score state
+    setScore(newScore);
     
     if(newScore > bestScore) {
-      setBestScore(newScore); // Update best score if needed
+      setBestScore(newScore);
     }
 
-    // Check win condition - if we've clicked all available characters (20 total)
     if (newClickedCards.length >= 20) {
-      console.log('You Win! All cards clicked correctly')
       setGameWon(true)
       return
     }
 
-    // Continue with normal flip logic
     setAllCardsFlipped(true)
     
-    // Filter out clicked cards AND "Antenna Rick" from available cards
     const clickedNames = newClickedCards.map(card => card.name)
     const otherCards = char.filter(character => 
       !clickedNames.includes(character.name) && 
       character.name !== "Antenna Rick"
     )
     
-    // Check if we have enough unclicked cards to continue
     if (otherCards.length < 2) {
-      console.log('You Win! No more unclicked cards available')
       setTimeout(() => {
         setGameWon(true)
       }, 1000)
@@ -90,10 +77,8 @@ const GameBoard = () => {
     const nextCards = [currentCard, otherCards[r1], otherCards[r2]]
 
     setTimeout(() => {
-      // First flip cards back to face-down
       setAllCardsFlipped(false)
       
-      // Then change the cards after a small delay
       setTimeout(() => {
         setGameCards(nextCards)
       }, 200)
@@ -115,9 +100,7 @@ const GameBoard = () => {
         <Scorecard score={score} bestScore={bestScore} /> 
       </div>
       
-      {/* Fixed container with no padding to prevent scroll */}
       <div className='absolute inset-0 flex justify-center items-center'>
-        {/* All screen sizes: 3 cards in a single line */}
         <div className='flex justify-center items-center gap-2 sm:gap-3 md:gap-4 lg:gap-6'>
           {gameCards.map((character, index) => ( 
             <FlipCard 
@@ -131,7 +114,6 @@ const GameBoard = () => {
         </div>
       </div>
       
-      {/* Game Over Popup Overlay */}
       {gameOver && (
         <GameOverScreen score={score} onPlayAgain={handlePlayAgain} />
       )}
