@@ -1,12 +1,12 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const Scorecard = ({
-    grid,
-    onCardClick,
+    score,
+    bestScore,
+
 }) => {
-  const [score, setScore] = useState(0);
-  const [bestScore, setBestScore] = useState(0);
+
   return (
     <div>
       <div className='flex flex-col items-start font-title text-2xl text-yellow-500 justify-center p-4 bg-fuchsia-900 rounded-lg shadow-lg'>
