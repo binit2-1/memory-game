@@ -53,9 +53,7 @@ const FlipCard = ({name, character, onClick, isFlipped = false}) => {
         <div className='w-48 h-64 rounded-lg'>
             <div 
                 ref={cardRef}
-                className={`relative w-full h-full rounded-lg shadow-lg border-2 border-gray-300 cursor-pointer hover:shadow-2xl ${
-                  isFlipped ? 'transition-transform duration-1000 ease-in-out' : 'transition-all duration-1000 ease-out'
-                }`}
+                className="relative w-full h-full rounded-lg shadow-lg border-2 border-gray-300 cursor-pointer hover:shadow-2xl transition-transform duration-1000 ease-in-out"
                 style={{ 
                     transform: getTransform(),
                     transformStyle: 'preserve-3d'

@@ -77,10 +77,13 @@ const GameBoard = () => {
     const nextCards = [currentCard, otherCards[r1], otherCards[r2], otherCards[r3], otherCards[r4]]
 
     setTimeout(() => {
-      setGameCards(nextCards)
+      // First flip cards back to face-down
+      setAllCardsFlipped(false)
+      
+      // Then change the cards after a small delay
       setTimeout(() => {
-        setAllCardsFlipped(false)
-      }, 500)
+        setGameCards(nextCards)
+      }, 200)
     }, 1000)
   }
 
@@ -88,10 +91,9 @@ const GameBoard = () => {
   const handlePlayAgain = () => {
     setGameOver(false)
     setClickedCards([])
-    setScore(0) 
-    // Reset to initial cards
-    const initialCards = char.slice(0, 5)
-    setGameCards(initialCards)
+    setScore(0)
+    setAllCardsFlipped(false)
+    setGameCards(char.slice(0, 5))
   }
 
   return (
@@ -102,7 +104,7 @@ const GameBoard = () => {
       <div className='flex justify-center items-center h-full gap-6 p-8'>
         {gameCards.map((character, index) => ( 
           <FlipCard 
-            key={character.id || index} 
+            key={`card-${index}`}
             character={character.image} 
             name={character.name}
             isFlipped={allCardsFlipped}
