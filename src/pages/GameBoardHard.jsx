@@ -104,7 +104,38 @@ const GameBoard = () => {
       
       {/* Fixed container with no padding to prevent scroll */}
       <div className='absolute inset-0 flex justify-center items-center'>
-        <div className='flex flex-wrap justify-center items-center gap-2 max-w-xs sm:max-w-sm md:max-w-lg content-center'>
+        {/* Mobile only: 3+2 simple layout */}
+        <div className='block sm:hidden'>
+          <div className='flex flex-col items-center gap-1'>
+            {/* Top row: 3 cards */}
+            <div className='flex gap-1'>
+              {gameCards.slice(0, 3).map((character, index) => ( 
+                <FlipCard 
+                  key={`card-${index}`}
+                  character={character.image} 
+                  name={character.name}
+                  isFlipped={allCardsFlipped}
+                  onClick={() => handleCardClick(character.name, index)}
+                />
+              ))}
+            </div>
+            {/* Bottom row: 2 cards */}
+            <div className='flex gap-1'>
+              {gameCards.slice(3, 5).map((character, index) => ( 
+                <FlipCard 
+                  key={`card-${index + 3}`}
+                  character={character.image} 
+                  name={character.name}
+                  isFlipped={allCardsFlipped}
+                  onClick={() => handleCardClick(character.name, index + 3)}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+        
+        {/* Small and up: 5 cards in a single line */}
+        <div className='hidden sm:flex justify-center items-center gap-3 md:gap-4 lg:gap-6'>
           {gameCards.map((character, index) => ( 
             <FlipCard 
               key={`card-${index}`}
